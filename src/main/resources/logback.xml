@@ -1,0 +1,24 @@
+<configuration>
+
+  <!-- log INFO or higher messages to the console -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5p %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- use AsyncAppender for lower latencies -->
+  <appender name="async" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="console" />
+  </appender>
+
+  <root level="WARN">
+    <appender-ref ref="async" />
+  </root>
+  <!--
+  <logger name="com.datastax.oss.driver" level= "DEBUG"/>
+  <logger name="com.datastax.oss.driver.api.core.metadata." level= "DEBUG"/>
+  <logger name="com.datastax.oss.driver.internal.core.metadata.NodeStateManager" level= "DEBUG"/>
+  <logger name="com.datastax.oss.driver.internal.core.metadata.DefaultTopologyMonitor" level= "DEBUG"/>
+  -->
+</configuration>
